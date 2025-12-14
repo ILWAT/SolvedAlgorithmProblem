@@ -1,14 +1,29 @@
 class Solution {
+    private int R1;
+    private int R2;
+    
     public long solution(int r1, int r2) {
+        R1 = r1;
+        R2 = r2;
         long answer = 0;
-        for (long x = 1; x <= r2; x++) {
-            int yMax = (int) Math.floor(Math.sqrt(Math.pow(r2, 2) - Math.pow(x, 2)));
-            int yMin = (int) Math.ceil(Math.sqrt(Math.pow(r1, 2) - Math.pow(x, 2)));
-
-            answer += (yMax - yMin + 1);
+        for (int x = 0; x <= r2; x++) {
+            for (int y = 0; y <= r2; y++) {
+                if (isInRange(x, y)) {
+                    answer++;
+                }
+            }
         }
         
         
-        return (answer * 4);
+        return (answer * 4) - 8;
+    }
+    
+    private boolean isInRange (int x, int y) {
+        if (y == 0) {
+            return x <= R2 && x >= R1;
+        } else {
+            double distance = Math.sqrt((x*x) + (y*y));
+            return distance <= R2 && distance >= R1;
+        }
     }
 }
