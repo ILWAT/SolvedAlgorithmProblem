@@ -1,5 +1,5 @@
-let intArr = readLine()!.split(separator: " ").map{ Int($0)! }
-let first = intArr[0]
-let second = intArr[1]
+let inputArr = readLine()!.split(separator: " ").map{ Int($0)! }
+let first = inputArr[0]
+let second = inputArr[1]
 let result = first * second
 print(result)
