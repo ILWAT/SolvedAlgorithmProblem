@@ -1,0 +1,31 @@
+import java.io.*;
+import java.util.*;
+
+class Main {
+	public static void main(String[] args) throws Exception {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String input = br.readLine();
+		int peopleCount = Integer.parseInt(input);
+		
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		HashSet<Integer> hs = new HashSet<>();
+		for (int i = 0; i < peopleCount; i++) {
+			int currentNum = Integer.parseInt(st.nextToken());
+			int positive = Math.abs(currentNum);
+			int negative = -positive;
+			if (hs.contains(positive)) {
+				hs.remove(positive);
+			} else if (hs.contains(negative)) {
+				hs.remove(negative);
+			} else {
+        hs.add(currentNum);
+      }
+		}
+
+    int answer = 0;
+    for (int num : hs) {
+			answer += num;
+		}
+		System.out.println(answer);
+	}
+}
